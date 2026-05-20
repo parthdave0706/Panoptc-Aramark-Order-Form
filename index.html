@@ -216,6 +216,48 @@
             text-decoration: none;
             font-weight: bold;
         }
+
+        .plans-intro {
+            background-color: #f8f9fa;
+            border-left: 3px solid var(--primary-color);
+            padding: 12px 15px;
+            margin: 15px 0 20px 0;
+            font-size: 13px;
+            color: #444;
+            line-height: 1.5;
+        }
+
+        .plan-recommendation {
+            margin-top: 10px;
+            padding-top: 10px;
+            border-top: 1px solid #d9d9d9;
+            font-size: 12px;
+            color: #555;
+            line-height: 1.45;
+        }
+
+        .plan-recommendation .rec-label {
+            color: var(--primary-color);
+            display: block;
+            margin-bottom: 4px;
+            font-size: 10px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.6px;
+        }
+
+        .default-badge {
+            display: inline-block;
+            background-color: #6c757d;
+            color: white;
+            padding: 3px 9px;
+            border-radius: 3px;
+            font-size: 10px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.6px;
+            margin-bottom: 8px;
+        }
     </style>
 </head>
 <body>
@@ -249,7 +291,7 @@
                 <strong>Includes:</strong>
                 <ul>
                     <li>1 ShopperSense device</li>
-                    <li>1 Monitor (with HDMI)</li>
+                    <li>1 24 inch Monitor (with HDMI)</li>
                     <li>1 Monitor Arm</li>
                     <li>10ft Ethernet Cable</li>
                 </ul>
@@ -257,12 +299,19 @@
         </div>
 
         <h2>Theft Detection Plans</h2>
+        <div class="plans-intro">
+            Bronze Annual is the baseline tier applied to every location by default. The recommendations on each plan below identify the situations where a higher tier is warranted, typically driven by monthly losses, market volume, new market status, or known theft activity.
+        </div>
         <div class="grid-container">
             <div class="section-block">
                 <h3>Diamond Plan</h3>
                 <div class="price-tag">$150 / Month / Location</div>
                 <p style="font-size: 13px; margin: 5px 0;">Analysis of suspicious kiosk behavior AND when users exit market without paying.</p>
                 <p style="font-size: 13px; font-weight: bold; margin: 5px 0;">4 weekly reviews (Theft reports every week).</p>
+                <div class="plan-recommendation">
+                    <span class="rec-label">Recommended for</span>
+                    New, High volume markets, locations with $500+ in monthly losses, high theft markets, and any account where tracking repeat offenders or grab and go theft is a priority. Best fit for problematic locations.
+                </div>
             </div>
 
             <div class="section-block">
@@ -270,6 +319,10 @@
                 <div class="price-tag">$90 / Month / Location</div>
                 <p style="font-size: 13px; margin: 5px 0;">Analysis of suspicious kiosk behavior.</p>
                 <p style="font-size: 13px; font-weight: bold; margin: 5px 0;">2 weekly reviews (Theft reports every week).</p>
+                <div class="plan-recommendation">
+                    <span class="rec-label">Recommended for</span>
+                    Locations with $300+ in monthly losses, any location currently being billed for theft with responsive clients who want regular footage delivery to address it. Best fit for average to slightly above average theft levels.
+                </div>
             </div>
 
             <div class="section-block">
@@ -277,6 +330,10 @@
                 <div class="price-tag">$999 / Year / Location</div>
                 <p style="font-size: 13px; margin: 5px 0;">Analysis of suspicious kiosk behavior.</p>
                 <p style="font-size: 13px; font-weight: bold; margin: 5px 0;">2 weekly reviews (Theft reports every week).</p>
+                <div class="plan-recommendation">
+                    <span class="rec-label">Recommended for</span>
+                    Same coverage as Gold Plan with annual billing. Best fit for locations with sustained or recurring theft patterns where weekly review is expected to be needed long term.
+                </div>
             </div>
 
             <div class="section-block">
@@ -284,20 +341,22 @@
                 <div class="price-tag">$65 / Month / Location</div>
                 <p style="font-size: 13px; margin: 5px 0;">Analysis of suspicious kiosk behavior.</p>
                 <p style="font-size: 13px; font-weight: bold; margin: 5px 0;">2 reviews every 2 weeks (Theft reports twice a month).</p>
+                <div class="plan-recommendation">
+                    <span class="rec-label">Recommended for</span>
+                    Larger locations that have already had theft mitigated or sit below the billing threshold, and locations with high theft potential that is not yet clearly established. Best fit for keeping theft low after initial mitigation.
+                </div>
             </div>
 
             <div class="section-block">
-                <h3>Bronze Plan</h3>
-                <div class="price-tag">$40 / Month / Location</div>
-                <p style="font-size: 13px; margin: 5px 0;">Analysis of suspicious kiosk behavior.</p>
-                <p style="font-size: 13px; font-weight: bold; margin: 5px 0;">2 monthly reviews (Theft reports once a month).</p>
-            </div>
-
-            <div class="section-block">
+                <span class="default-badge">Default Tier</span>
                 <h3>Bronze Annual Plan</h3>
                 <div class="price-tag">$258 / Year / Location</div>
                 <p style="font-size: 13px; margin: 5px 0;">Analysis of suspicious kiosk behavior.</p>
                 <p style="font-size: 13px; font-weight: bold; margin: 5px 0;">2 monthly reviews (Theft reports once a month).</p>
+                <div class="plan-recommendation">
+                    <span class="rec-label">Recommended for</span>
+                    The baseline tier applied to every location by default. Provides a baseline of reporting as a backup in case issues arise or to justify billing.
+                </div>
             </div>
         </div>
 
@@ -340,7 +399,6 @@
                                 <option value="Gold">Gold ($90/mo)</option>
                                 <option value="Gold Annual">Gold Annual ($999/yr)</option>
                                 <option value="Silver">Silver ($65/mo)</option>
-                                <option value="Bronze">Bronze ($40/mo)</option>
                                 <option value="Bronze Annual">Bronze Annual ($258/yr)</option>
                             </select>
                         </td>
@@ -391,6 +449,14 @@
             </div>
         </div>
 
+        <h2>Additional Notes</h2>
+        <div class="section-block" style="background: #ffffff; margin-bottom: 20px;">
+            <div class="form-group" style="margin-bottom: 0;">
+                <label for="order_notes">Notes for this order (optional)</label>
+                <textarea id="order_notes" name="order_notes" rows="4" placeholder="Anything the success team should know. Examples: special timing, install constraints, plan justifications for specific locations, prior context with this MC, or hardware requests that fall outside the standard bundle."></textarea>
+            </div>
+        </div>
+
         <button type="submit" class="btn-submit">Submit Order</button>
     </form>
 
@@ -415,7 +481,6 @@
                     <option value="Gold">Gold ($90/mo)</option>
                     <option value="Gold Annual">Gold Annual ($999/yr)</option>
                     <option value="Silver">Silver ($65/mo)</option>
-                    <option value="Bronze">Bronze ($40/mo)</option>
                     <option value="Bronze Annual">Bronze Annual ($258/yr)</option>
                 </select>
             </td>
@@ -466,6 +531,7 @@
         const shippingAddress = document.getElementById('shipping_address').value;
         const contactNumber = document.getElementById('contact_number').value;
         const onboardingEmails = document.getElementById('onboarding_emails').value || 'None provided';
+        const orderNotes = document.getElementById('order_notes').value || 'None provided';
 
         // Compose the professional raw plain text email body
         const emailSubject = `Panoptyc Aramark Order - ${marketCenter}`;
@@ -491,6 +557,10 @@
             `Shipping Address: ${shippingAddress}\n` +
             `Contact Number: ${contactNumber}\n` +
             `Onboarding Emails: ${onboardingEmails}\n\n` +
+            `=================================\n` +
+            `ADDITIONAL NOTES\n` +
+            `=================================\n` +
+            `${orderNotes}\n\n` +
             `Please review and process this order configuration manually.`;
 
         // Direct the user's browser to execute their native default email application with preformatted metadata

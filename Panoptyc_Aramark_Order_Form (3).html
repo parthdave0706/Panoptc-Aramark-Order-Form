@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panoptyc Aramark Order Form</title>
+    <style>
+        :root {
+            --primary-color: #003366;
+            --secondary-color: #f4f6f9;
+            --border-color: #cccccc;
+            --text-color: #333333;
+            --danger-color: #d9534f;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: #eef2f5;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .form-container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .header {
+            text-align: center;
+            border-bottom: 3px solid var(--primary-color);
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+
+        .header h1 {
+            color: var(--primary-color);
+            margin: 0;
+            text-transform: uppercase;
+            font-size: 28px;
+            letter-spacing: 1px;
+        }
+
+        .header p {
+            margin: 5px 0 0 0;
+            color: #666;
+            font-weight: 500;
+        }
+
+        h2 {
+            color: var(--primary-color);
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 5px;
+            margin-top: 30px;
+            font-size: 20px;
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .section-block {
+            background: var(--secondary-color);
+            padding: 15px;
+            border-radius: 6px;
+            border: 1px solid #e0e0e0;
+        }
+
+        .section-block h3 {
+            margin-top: 0;
+            color: #333;
+            font-size: 16px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 5px;
+        }
+
+        .price-tag {
+            font-weight: bold;
+            color: var(--danger-color);
+            margin: 5px 0;
+        }
+
+        ul {
+            margin: 5px 0;
+            padding-left: 20px;
+            font-size: 14px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="number"],
+        input[type="tel"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-size: 14px;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 5px rgba(0, 51, 102, 0.2);
+        }
+
+        .table-responsive {
+            overflow-x: auto;
+            margin-top: 15px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 10px;
+        }
+
+        table, th, td {
+            border: 1px solid var(--border-color);
+        }
+
+        th {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 12px 10px;
+            text-align: left;
+            font-size: 14px;
+        }
+
+        td {
+            padding: 10px;
+            background-color: #fff;
+        }
+
+        .btn-add-row {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            transition: background 0.2s;
+        }
+
+        .btn-add-row:hover {
+            background-color: #218838;
+        }
+
+        .btn-remove {
+            background-color: var(--danger-color);
+            color: white;
+            border: none;
+            padding: 6px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        
+        .btn-remove:hover {
+            background-color: #c9302c;
+        }
+
+        .btn-submit {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 30px;
+            transition: background 0.2s;
+        }
+
+        .btn-submit:hover {
+            background-color: #002244;
+        }
+
+        .footer-info {
+            text-align: center;
+            margin-top: 30px;
+            font-size: 14px;
+            color: #555;
+            border-top: 1px solid var(--border-color);
+            padding-top: 20px;
+        }
+
+        .footer-info a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+<div class="form-container">
+    <div class="header">
+        <h1>Panoptyc Aramark Order Form</h1>
+        <p>Hardware and Theft Detection Plans Pricing Sheet</p>
+    </div>
+
+    <form action="#" method="POST" id="orderForm" onsubmit="sendOrderEmail(event)">
+        
+        <h2>Hardware Options</h2>
+        <div class="grid-container">
+            <div class="section-block">
+                <h3>Aramark Camera Bundle</h3>
+                <div class="price-tag">$675 / camera</div>
+                <div style="font-size: 12px; color: #666; margin-bottom: 10px;">(Excluding $31 shipping)</div>
+                <strong>Includes:</strong>
+                <ul>
+                    <li>1 camera (Rhombus R120)</li>
+                    <li>Camera hardware (5ft and 50ft ethernet cables and POE switch)</li>
+                    <li>3-year camera license</li>
+                </ul>
+            </div>
+
+            <div class="section-block">
+                <h3>ShopperSense Bundle</h3>
+                <div class="price-tag">$550 + $10 / month</div>
+                <div style="font-size: 12px; color: #666; margin-bottom: 10px;">(Excluding $31 shipping)</div>
+                <strong>Includes:</strong>
+                <ul>
+                    <li>1 ShopperSense device</li>
+                    <li>1 Monitor (with HDMI)</li>
+                    <li>1 Monitor Arm</li>
+                    <li>10ft Ethernet Cable</li>
+                </ul>
+            </div>
+        </div>
+
+        <h2>Theft Detection Plans</h2>
+        <div class="grid-container">
+            <div class="section-block">
+                <h3>Diamond Plan</h3>
+                <div class="price-tag">$150 / Month / Location</div>
+                <p style="font-size: 13px; margin: 5px 0;">Analysis of suspicious kiosk behavior AND when users exit market without paying.</p>
+                <p style="font-size: 13px; font-weight: bold; margin: 5px 0;">4 weekly reviews (Theft reports every week).</p>
+            </div>
+
+            <div class="section-block">
+                <h3>Gold Plan</h3>
+                <div class="price-tag">$90 / Month / Location</div>
+                <p style="font-size: 13px; margin: 5px 0;">Analysis of suspicious kiosk behavior.</p>
+                <p style="font-size: 13px; font-weight: bold; margin: 5px 0;">2 weekly reviews (Theft reports every week).</p>
+            </div>
+
+            <div class="section-block">
+                <h3>Gold Annual Plan</h3>
+                <div class="price-tag">$999 / Year / Location</div>
+                <p style="font-size: 13px; margin: 5px 0;">Analysis of suspicious kiosk behavior.</p>
+                <p style="font-size: 13px; font-weight: bold; margin: 5px 0;">2 weekly reviews (Theft reports every week).</p>
+            </div>
+
+            <div class="section-block">
+                <h3>Silver Plan</h3>
+                <div class="price-tag">$65 / Month / Location</div>
+                <p style="font-size: 13px; margin: 5px 0;">Analysis of suspicious kiosk behavior.</p>
+                <p style="font-size: 13px; font-weight: bold; margin: 5px 0;">2 reviews every 2 weeks (Theft reports twice a month).</p>
+            </div>
+
+            <div class="section-block">
+                <h3>Bronze Plan</h3>
+                <div class="price-tag">$40 / Month / Location</div>
+                <p style="font-size: 13px; margin: 5px 0;">Analysis of suspicious kiosk behavior.</p>
+                <p style="font-size: 13px; font-weight: bold; margin: 5px 0;">2 monthly reviews (Theft reports once a month).</p>
+            </div>
+
+            <div class="section-block">
+                <h3>Bronze Annual Plan</h3>
+                <div class="price-tag">$258 / Year / Location</div>
+                <p style="font-size: 13px; margin: 5px 0;">Analysis of suspicious kiosk behavior.</p>
+                <p style="font-size: 13px; font-weight: bold; margin: 5px 0;">2 monthly reviews (Theft reports once a month).</p>
+            </div>
+        </div>
+
+        <h2>Market Center</h2>
+        <div class="section-block" style="background: #ffffff; margin-bottom: 20px;">
+            <div class="form-group" style="margin-bottom: 0;">
+                <label for="market_center">Market Center Name</label>
+                <input type="text" id="market_center" name="market_center" placeholder="e.g., MC 204 - Denver South" required>
+            </div>
+        </div>
+
+        <h2>Order Details</h2>
+        <div class="table-responsive">
+            <table id="orderTable">
+                <thead>
+                    <tr>
+                        <th>Location</th>
+                        <th>Aramark Camera Bundle (Qty)</th>
+                        <th>ShopperSense Bundle (Qty)</th>
+                        <th>Theft Plan Type</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr style="background-color: #f9f9f9; font-style: italic; color: #888;">
+                        <td>Ex. Fedex Main (Example Row)</td>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>Diamond</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td><input type="text" name="branch_name[]" placeholder="e.g., Fedex Main" required></td>
+                        <td><input type="number" name="camera_qty[]" min="0" value="0"></td>
+                        <td><input type="number" name="shopper_qty[]" min="0" value="0"></td>
+                        <td>
+                            <select name="plan_type[]">
+                                <option value="">-- Select a Plan --</option>
+                                <option value="Diamond">Diamond ($150/mo)</option>
+                                <option value="Gold">Gold ($90/mo)</option>
+                                <option value="Gold Annual">Gold Annual ($999/yr)</option>
+                                <option value="Silver">Silver ($65/mo)</option>
+                                <option value="Bronze">Bronze ($40/mo)</option>
+                                <option value="Bronze Annual">Bronze Annual ($258/yr)</option>
+                            </select>
+                        </td>
+                        <td style="text-align: center;">
+                            <!-- First row cannot be removed, so no button here -->
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <button type="button" class="btn-add-row" onclick="addRow()">+ Add Another Location</button>
+        </div>
+
+        <div class="grid-container" style="margin-top: 10px;">
+            <div class="section-block" style="background: #fff;">
+                <h3>Billing Information</h3>
+                <div class="form-group">
+                    <label for="billing_name">Name</label>
+                    <input type="text" id="billing_name" name="billing_name" required>
+                </div>
+                <div class="form-group">
+                    <label for="billing_address">Billing Address</label>
+                    <textarea id="billing_address" name="billing_address" rows="3" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="billing_email">Email to Send Invoice To</label>
+                    <input type="email" id="billing_email" name="billing_email" required>
+                </div>
+            </div>
+
+            <div class="section-block" style="background: #fff;">
+                <h3>Shipping Information</h3>
+                <div class="form-group">
+                    <label for="shipping_name">Name of Recipient</label>
+                    <input type="text" id="shipping_name" name="shipping_name" required>
+                </div>
+                <div class="form-group">
+                    <label for="shipping_address">Shipping Address</label>
+                    <textarea id="shipping_address" name="shipping_address" rows="3" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="contact_number">Contact Number</label>
+                    <input type="tel" id="contact_number" name="contact_number" required>
+                </div>
+                <div class="form-group">
+                    <label for="onboarding_emails">Onboarding Emails (Comma separated)</label>
+                    <input type="text" id="onboarding_emails" name="onboarding_emails" placeholder="email1@domain.com, email2@domain.com">
+                </div>
+            </div>
+        </div>
+
+        <button type="submit" class="btn-submit">Submit Order</button>
+    </form>
+
+    <div class="footer-info">
+        If you have any questions, you may reach out to <strong>Bridger Keally</strong> at <strong>(970) 988-3128</strong> or <a href="mailto:sales@panoptyc.com">sales@panoptyc.com</a>.
+    </div>
+</div>
+
+<script>
+    function addRow() {
+        const tbody = document.querySelector('#orderTable tbody');
+        const newRow = document.createElement('tr');
+        
+        newRow.innerHTML = `
+            <td><input type="text" name="branch_name[]" placeholder="e.g., Fedex Main" required></td>
+            <td><input type="number" name="camera_qty[]" min="0" value="0"></td>
+            <td><input type="number" name="shopper_qty[]" min="0" value="0"></td>
+            <td>
+                <select name="plan_type[]">
+                    <option value="">-- Select a Plan --</option>
+                    <option value="Diamond">Diamond ($150/mo)</option>
+                    <option value="Gold">Gold ($90/mo)</option>
+                    <option value="Gold Annual">Gold Annual ($999/yr)</option>
+                    <option value="Silver">Silver ($65/mo)</option>
+                    <option value="Bronze">Bronze ($40/mo)</option>
+                    <option value="Bronze Annual">Bronze Annual ($258/yr)</option>
+                </select>
+            </td>
+            <td style="text-align: center;">
+                <button type="button" class="btn-remove" onclick="removeRow(this)">X</button>
+            </td>
+        `;
+        
+        tbody.appendChild(newRow);
+    }
+
+    function removeRow(button) {
+        const row = button.closest('tr');
+        row.remove();
+    }
+
+    function sendOrderEmail(event) {
+        event.preventDefault();
+
+        // Retrieve Market Center
+        const marketCenter = document.getElementById('market_center').value;
+
+        // Gather Order Locations & Hardware configuration details
+        const branchNames = document.getElementsByName('branch_name[]');
+        const cameraQtys = document.getElementsByName('camera_qty[]');
+        const shopperQtys = document.getElementsByName('shopper_qty[]');
+        const planTypes = document.getElementsByName('plan_type[]');
+
+        let locationsDetails = '';
+        for (let i = 0; i < branchNames.length; i++) {
+            const locName = branchNames[i].value;
+            const camQty = cameraQtys[i].value || 0;
+            const shopQty = shopperQtys[i].value || 0;
+            const plan = planTypes[i].value || 'None';
+            
+            locationsDetails += `Location #${i + 1}: ${locName}\n`;
+            locationsDetails += `  - Camera Bundle Qty: ${camQty}\n`;
+            locationsDetails += `  - ShopperSense Bundle Qty: ${shopQty}\n`;
+            locationsDetails += `  - Theft Plan Type: ${plan}\n\n`;
+        }
+
+        // Gather Billing & Shipping Details
+        const billingName = document.getElementById('billing_name').value;
+        const billingAddress = document.getElementById('billing_address').value;
+        const billingEmail = document.getElementById('billing_email').value;
+
+        const shippingName = document.getElementById('shipping_name').value;
+        const shippingAddress = document.getElementById('shipping_address').value;
+        const contactNumber = document.getElementById('contact_number').value;
+        const onboardingEmails = document.getElementById('onboarding_emails').value || 'None provided';
+
+        // Compose the professional raw plain text email body
+        const emailSubject = `Panoptyc Aramark Order - ${marketCenter}`;
+        const emailBody = `A new Panoptyc Aramark Order has been configured.\n\n` +
+            `=================================\n` +
+            `GENERAL DETAILS\n` +
+            `=================================\n` +
+            `Market Center: ${marketCenter}\n\n` +
+            `=================================\n` +
+            `ORDER CONFIGURATIONS\n` +
+            `=================================\n` +
+            `${locationsDetails}` +
+            `=================================\n` +
+            `BILLING INFORMATION\n` +
+            `=================================\n` +
+            `Name: ${billingName}\n` +
+            `Billing Address: ${billingAddress}\n` +
+            `Email to Send Invoice: ${billingEmail}\n\n` +
+            `=================================\n` +
+            `SHIPPING INFORMATION\n` +
+            `=================================\n` +
+            `Recipient Name: ${shippingName}\n` +
+            `Shipping Address: ${shippingAddress}\n` +
+            `Contact Number: ${contactNumber}\n` +
+            `Onboarding Emails: ${onboardingEmails}\n\n` +
+            `Please review and process this order configuration manually.`;
+
+        // Direct the user's browser to execute their native default email application with preformatted metadata
+        const mailtoLink = `mailto:sales@panoptyc.com?subject=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailBody)}`;
+        window.location.href = mailtoLink;
+    }
+</script>
+
+</body>
+</html>
